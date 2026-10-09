@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Опросник</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5.0.0/index.css">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    background: #ffffff;
+    color: #222;
+    min-height: 100vh;
+    padding: 60px 20px;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .statement {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+    border-bottom: 1px solid #eee;
+    gap: 20px;
+  }
+
+  .statement:last-of-type {
+    border-bottom: none;
+  }
+
+  .statement-text {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .statement-number {
+    color: #FFC014;
+    font-weight: 600;
+    min-width: 22px;
+  }
+
+  .options {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .option {
+    position: relative;
+  }
+
+  .option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .option label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid #ddd;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #fff;
+    color: #555;
+  }
+
+  .option label:hover {
+    border-color: #92D050;
+  }
+
+  .option input:checked + label {
+    background: #92D050;
+    border-color: #92D050;
+    color: #fff;
+  }
+
+  .done-btn {
+    display: block;
+    margin: 48px auto 0;
+    padding: 14px 48px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    background: #FFC014;
+    color: #222;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .done-btn:hover {
+    background: #f5b800;
+  }
+
+  .done-btn:active {
+    transform: scale(0.98);
+  }
+
+  .feedback {
+    margin-top: 40px;
+    padding: 28px 32px;
+    background: #fafafa;
+    border-left: 3px solid #FFC014;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #222;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-8px);
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease, margin 0.4s ease, padding 0.4s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+  }
+
+  .feedback.visible {
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 28px 32px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .statement {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .options {
+      margin-top: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="statement">
+      <div class="statement-text">
+        <span class="statement-number">1.</span>
+        <span>Говорю «нет» без оправданий</span>
+      </div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q1" id="q1-0" value="0"><label for="q1-0">0</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1-1" value="1"><label for="q1-1">1</label></div>
+        <div class="option"><input type="radio" name="q1" id="q1-2" value="2"><label for="q1-2">2</label></div>
+      </div>
+    </div>
+
+    <div class="statement">
+      <div class="statement-text">
+        <span class="statement-number">2.</span>
+        <span>Прошу о помощи/уточнениях</span>
+      </div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q2" id="q2-0" value="0"><label for="q2-0">0</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2-1" value="1"><label for="q2-1">1</label></div>
+        <div class="option"><input type="radio" name="q2" id="q2-2" value="2"><label for="q2-2">2</label></div>
+      </div>
+    </div>
+
+    <div class="statement">
+      <div class="statement-text">
+        <span class="statement-number">3.</span>
+        <span>Признаю ошибки без самобичевания</span>
+      </div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q3" id="q3-0" value="0"><label for="q3-0">0</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3-1" value="1"><label for="q3-1">1</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3-2" value="2"><label for="q3-2">2</label></div>
+      </div>
+    </div>
+
+    <div class="statement">
+      <div class="statement-text">
+        <span class="statement-number">4.</span>
+        <span>Передумываю и сообщаю об этом спокойно</span>
+      </div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q4" id="q4-0" value="0"><label for="q4-0">0</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4-1" value="1"><label for="q4-1">1</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4-2" value="2"><label for="q4-2">2</label></div>
+      </div>
+    </div>
+
+    <div class="statement">
+      <div class="statement-text">
+        <span class="statement-number">5.</span>
+        <span>Не завишу от чужого одобрения в личных решениях</span>
+      </div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q5" id="q5-0" value="0"><label for="q5-0">0</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5-1" value="1"><label for="q5-1">1</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5-2" value="2"><label for="q5-2">2</label></div>
+      </div>
+    </div>
+
+    <button class="done-btn" id="doneBtn">Готово</button>
+
+    <div class="feedback" id="feedback">
+      Выберите 1–2 пункта с «0» — это ваши приоритеты на ближайшую неделю.
+      Сформулируйте по 2 фразы‑опоры для каждой ситуации.
+    </div>
+  </div>
+
+<script>
+  const doneBtn = document.getElementById('doneBtn');
+  const feedback = document.getElementById('feedback');
+
+  doneBtn.addEventListener('click', () => {
+    feedback.classList.add('visible');
+    setTimeout(() => {
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  });
+</script>
+</body>
+</html>
